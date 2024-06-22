@@ -1,0 +1,95 @@
+
+      <footer class="section novi-background footer-advanced bg-gray-700">
+        <div class="footer-advanced-main">
+          <div class="container">
+            <div class="row row-50">
+              <div class="col-lg-4">
+                <h5 class="font-weight-bold text-uppercase text-white">About Us</h5>
+                <p class="footer-advanced-text"><%= about.description %></p>
+              </div>
+              <div class="col-sm-7 col-md-5 col-lg-4">
+                <h5 class="font-weight-bold text-uppercase text-white">Recent Blog Posts</h5>
+                <!-- Post Inline-->
+                <% blog.forEach((post) => { %>
+                <article class="post-inline">
+                  <p class="post-inline-title"><a href="/blog-in-full?id=<%= post._id %>"><%= post.topic %></a></p>
+                  <ul class="post-inline-meta">
+                    <li>by <%= post.fullname %></li>
+                    <li><a href="/blog-in-full?id=<%= post._id %>"><%= post.timeDifference %></a></li>
+                  </ul>
+                </article>
+                <% }) %>
+                <!-- Post Inline-->
+              
+              </div>
+              <div class="col-sm-5 col-md-7 col-lg-4">
+                <h5 class="font-weight-bold text-uppercase text-white">Gallery</h5>
+                <div class="row row-x-10" data-lightgallery="group">
+
+                  <% if (housgallery && housgallery.length > 0) { %>
+                    <% housgallery.forEach((house) => { %>
+                      <% if (house.img2 && house.img2.url) { %>
+                        <div class="col-3 col-sm-4 col-md-3">
+                          <a class="thumbnail-minimal" href="<%= house.img2.url %>" data-lightgallery="item">
+                            <img class="thumbnail-minimal-image" src="<%= house.img2.url %>" alt=""/>
+                            <div class="thumbnail-minimal-caption"></div>
+                          </a>
+                        </div>
+                      <% } %>
+                    <% }) %>
+                  <% } %>
+                  
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-advanced-aside">
+          <div class="container">
+            <div class="footer-advanced-layout">
+              <div>
+                <ul class="list-nav"> 
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/about-us">About</a></li>
+                  <li><a href="/property">Properties</a></li>
+                  <li><a href="/all-lands">Our Lands</a></li>
+                  <li><a href="/blog">Blog</a></li>
+                  <li><a href="/contacts">Contacts</a></li>
+                  <li><a href="/feedback-page">Let here your Testimony</a></li>
+                  <li><a href="/career">Career</a></li>
+
+                </ul>
+              </div>
+              <div>
+                <ul class="foter-social-links list-inline list-inline-md">
+                  <li><a class="icon novi-icon icon-sm link-default mdi mdi-facebook" href="<%= info.facebook %>"></a></li>
+                  <li><a class="icon novi-icon icon-sm link-default mdi mdi-twitter" href="<%= info.twitter %>""></a></li>
+                  <li><a class="icon novi-icon icon-sm link-default mdi mdi-instagram" href="<%= info.instagram %>""></a></li>
+                  <li><a class="icon novi-icon icon-sm link-default mdi mdi-google" href="<%= info.email %>"></a></li>
+                  <li><a class="icon novi-icon icon-sm link-default mdi mdi-linkedin" href="<%= info.linkedin %>"></a></li>
+                  <li><a class="icon novi-icon icon-sm link-default mdi mdi-whatsapp" href="<%= info.whatsapp %>"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <hr/>
+        </div>
+        <div class="footer-advanced-aside">
+          <div class="container">
+            <div class="footer-advanced-layout" ><a class="brand" href="/"><img style="filter:drop-shadow(2px 5px 10px #fff);" src="<%= info.img.url %>" alt="" width="115" height="34" srcset=""/></a>
+              <!-- Rights-->
+              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved <%= info.company_name %>. Design by <a href="tel:+2349018675469">Dark Theme Code(Idris Yusuph Olatunji. CEO)</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<%- include ('./include/index-header.ejs') %>
+<%- include ('./include/main-header.ejs') %>
+   
+      <!-- Breadcrumbs -->
+      <% if(services && services.img && services.img.url ) {%>
+      <section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url('<%= services.img.url %>');">
+        <div class="breadcrumbs-custom-inner">
+          <div class="container breadcrumbs-custom-container">
+            <div class="breadcrumbs-custom-main">
+              <h6 class="breadcrumbs-custom-subtitle title-decorated"><%= services.category %></h6>
+              <h2 class="text-uppercase breadcrumbs-custom-title"><%= services.heading %></h2>
+            </div>
+            <ul class="breadcrumbs-custom-path">
+              <li><a href="/">Home</a></li>
+              <li class="active">Blog</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <% } %>
+      <h2 class="text-uppercase breadcrumbs-custom-title" style="padding: 30px;">All News</h2>
+      <% if(blog && blog.length > 0) { %>
+        <% blog.forEach((log) => { %>
+       <section class="section novi-background section-sm">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-8">
+              <h6><%= log.topic %></h6>
+              <div class="row row-30">
+                <div class="col-md-6"><img src="<%= log.image.url %>" alt="" width="770" height="456"/>
+                    <p>Author: <%- log.fullname %>. <%= log.timeDifference %></p>
+                </div>
+                <div class="col-md-6 post-preview" >
+                  <p><%= log.article %></p>
+                  
+                  <button class=""><a href="/blog-in-full?id=<%= log._id %>"> Read more </a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <% })%>
+      <% } %>
+     
+      <%- include ('./include/index-footer.ejs') %>
+
+
+      <script>
+        const postPreviews = document.querySelectorAll('.post-preview');
+      
+        postPreviews.forEach(postPreview => {
+          const postContent = postPreview.querySelector('p').textContent;
+          const words = postContent.split(' ');
+          const preview = words.slice(0, 50).join(' ');
+      
+          postPreview.querySelector('p').textContent = preview + '...';
+      
+          const readMoreButton = postPreview.querySelector('.read-more');
+          const fullPostContent = document.createElement('div');
+          fullPostContent.innerHTML = postContent;
+          fullPostContent.style.display = 'none';
+      
+          readMoreButton.addEventListener('click', () => {
+            if (fullPostContent.style.display === 'none') {
+              fullPostContent.style.display = 'block';
+              readMoreButton.textContent = 'Read less';
+            } else {
+              fullPostContent.style.display = 'none';
+              readMoreButton.textContent = 'Read more';
+            }
+          });
+      
+          postPreview.appendChild(fullPostContent);
+        });
+        
+       
+      </script>

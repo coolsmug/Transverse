@@ -1,0 +1,52 @@
+<%- include ('./include/index-header.ejs') %>
+<%- include ('./include/main-header.ejs') %>
+
+<div class="payment-slip">
+    <div class="image">
+        <img src="" alt="">
+       <h2 class="payment_id">
+            <%= paymentId %>
+       </h2>
+    </div>
+    <div class="company-name">
+        <h1 class="status">
+            <%=  paymentStatus %>
+        </h1>
+        <h2 class="companyname">
+            TRANSVERSE
+        </h2>
+        <p class="other">
+            REAL ESTATES SOLUTION
+        </p>
+        <p class="address">
+            <!-- Address can be added here -->
+        </p>
+    </div>
+    <div class="property-info">
+        <div class="name">
+            <p>Name:</p>
+            <p><%= username %></p>
+        </div>
+        <div class="propertyname">
+            <p>Property Name:</p>
+            <p><%= house_name %></p>
+        </div>
+        <div class="price">
+            <p>Amount Paid:</p>
+            <p><%= amount %></p>
+        </div>
+        <div class="id">
+            <p>Property ID:</p>
+            <p><%= propertyId %></p>
+        </div>
+        <div class="date">
+            <p>Date:</p>
+            <p><%= new Date().toLocaleDateString() %></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<%- include ('./include/index-footer.ejs') %>

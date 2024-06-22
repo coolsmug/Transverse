@@ -1,0 +1,71 @@
+<%- include ('./dash_include/header.ejs')  %>
+<%- include ('./dash_include/dashboard_all.ejs') %>
+
+
+<div class="main-container">
+    <nav class="headering">
+        <div class="head_in">
+            <P>Admin Table</P>
+         <ol>
+            <li> 
+                <a href="">
+                    Home >
+                </a>
+            </li>
+            <li> 
+                <a href="">
+                    Add Service
+                </a>
+            </li>
+        </ol>
+        </div>
+        <a href="/admin/Dashboard" class="created">Dashboard</a>
+    </nav>
+
+    <div class="table_admin">
+        <%- include ('./messages/messages.ejs') %>
+        <div class="d-name-tag">
+            <p>Use this from to create Company Services</p>
+        </div>
+
+        <form action="/admin/create-service" method="POST" enctype="multipart/form-data" class="formings">
+            
+            <div class="form-group">
+                <label>Service Title:</label>
+                <input class="form-control" value="" type="text" name="heading" placeholder="e.g, if you are creating Special offer let the heading be the Month of the offer, December">
+            </div>
+           
+            <div class="form-group">
+                <label>Your Service:</label>
+                <textarea class="form-control" name="about" ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="img">Service image Cover:</label>
+                <input type="file" name="img" id="img" class="form-control-file form-control height-auto" >
+            </div>
+            <div class="form-group custom-select">
+                <label>Purpose:</label>
+                <select name="category" class="form-control">
+                    <option>Select status</option>
+                    <option value="Special Offer">Special Offer</option>
+                    <option value="Service">Service</option>   
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="img2">Side Image</label>
+                <input type="file" name="image" id="img2" class="form-control-file form-control height-auto">
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="footering">
+        <h3>All rights reserved and Powered by: Valiantfoot Limited <i class="fas fa-copyright"></i> 2023</h3>
+    </div>
+</div>
+
+<%- include ('./dash_include/footer.ejs') %>

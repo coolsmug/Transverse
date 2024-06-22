@@ -1,0 +1,191 @@
+<%- include ('./include/index-header.ejs') %>
+<%- include ('./include/main-header.ejs') %>
+   
+
+<section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url('<%= blogs.img.url %>');">
+    <div class="breadcrumbs-custom-inner">
+      <div class="container breadcrumbs-custom-container">
+        <div class="breadcrumbs-custom-main">
+          <h6 class="breadcrumbs-custom-subtitle title-decorated"><%= blogs.category %></h6>
+          <h2 class="text-uppercase breadcrumbs-custom-title"><%= blogs.topic %></h2>
+        </div>
+        <ul class="breadcrumbs-custom-path">
+          <li><a href="/">Home</a></li>
+          <li class="active"><%= blogs.topic %></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section novi-background section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-xl-8">
+          <h6><%= blogs.topic %></h6>
+          <figure class="figure-light"><img class="img-centered" src="<%= blogs.image.url %>" alt="" width="770" height="456"/>
+            <figcaption>
+              <p>AUTHOR: <%= blogs.fullname %> | POSTED : <%= timeDifference %></p>
+            </figcaption>
+          </figure>
+          <p class="ppp"><%= blogs.article %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="all">
+        <button class="like-button" data-blog-id="<%= blogs._id %>">Like</button>
+    <p id="like-count">Likes: <%= blogs.likes %></p>
+   
+  
+    <div class="post-footer">
+     
+      <div class="post-share">
+        <span>Share: </span>
+        <ul class="list-inline socials">
+          <li class="list-inline-item">
+            
+              <i class=" mdi mdi-facebook hoverOver" aria-hidden="true" onclick="shareOnFacebook()"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            
+              <i class=" mdi mdi-twitter hoverOver" aria-hidden="true" onclick="shareOnTwitter()"></i>
+            
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <i class=" mdi mdi-instagram hoverOver" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+          
+              <i class=" mdi mdi-linkedin hoverOver" aria-hidden="true" onclick="shareOnLinkedIn()"></i>
+             
+          </li>
+        </ul>
+      </div>
+    </div>
+<button onclick="shareContent()" class="button">Share on Social Media</button>
+<div id="blogData" data-category="<%= blogs.category %>" data-topic="<%= blogs.topic %>"></div>
+    </div>
+    
+
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+ 
+    console.log("Script loaded");
+    $(".like-button").on("click", function () {
+    const blogId = $(this).data("blog-id");
+
+    // Send an Ajax request to the server to handle the like
+    $.ajax({
+        type: "POST",
+        url: "/like",
+        data: { blogId: blogId },
+        success: function (response) {
+            if (response.success) {
+                // Update the like count on the page
+                $("#like-count").text("Likes: " + response.likes);
+            } else {
+                console.error("Failed to like the blog post.");
+            }
+        },
+        error: function (error) {
+            console.error("Error during the Ajax request:", error);
+        },
+    });
+});
+
+
+function shareOnTwitter() {
+      const newsTitle = '<%=blog.topic%>';
+      const newsUrl = window.location.href;
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(newsTitle)}&url=${encodeURIComponent(newsUrl)}`;
+      window.open(twitterUrl, '_blank');
+    }
+
+    function shareOnFacebook() {
+      const newsTitle = '<%=blog.topic%>';
+      const newsUrl = window.location.href;
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(newsUrl)}`;
+      window.open(facebookUrl, '_blank');
+    }
+
+    function shareOnLinkedIn() {
+      const newsTitle = '<%=blog.topic%>';
+      const newsUrl = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(newsUrl)}`;
+    window.open(linkedInUrl, '_blank');
+  }
+
+
+  function shareOnInstagram() {
+    // Provide instructions to users to share content manually on Instagram.
+    alert('To share on Instagram, open the Instagram app and upload your content. or USE SECOND SHARE BUTTON');
+  }
+
+
+
+  async function shareContent() {
+  const blogDataElement = document.getElementById('blogData');
+  const category = blogDataElement.getAttribute('data-category');
+  const topic = blogDataElement.getAttribute('data-topic');
+
+  const content = {
+    title: category,
+    text: topic,
+    url: window.location.href,
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(content);
+    } else {
+      alert('Web Share API not supported on this browser.');
+    }
+  } catch (error) {
+    console.error('Error sharing content:', error);
+  }
+}
+
+// Assuming you have included jQuery in your project
+// You can add this script at the end of your HTML file or in a separate JavaScript file
+
+  </script>
+
+
+
+
+
+<style>
+  button { 
+    outline : none;
+    border : none;
+    background-color: #07294d;
+    padding: 5px;
+    border-radius: 3px;
+    color: #fff;
+  }
+  .all {
+    margin-left: 100px;
+    margin-top: 50px    ;
+  }
+
+  .ppp {
+    line-height: 1.5 !important;
+            white-space: pre-line !important;
+           
+  }
+
+  .mdi {
+    color: #0b427d;
+    font-size: 18px;
+  }
+</style>
+
+
+
+<%- include ('./include/index-footer.ejs') %>

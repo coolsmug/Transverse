@@ -1,0 +1,160 @@
+<%- include ('./dash_include/header.ejs')  %>
+<%- include ('./dash_include/dashboard_all.ejs') %>
+
+
+<div class="main-container">
+    <nav class="headering">
+        <div class="head_in">
+            <P>Admin Table</P>
+         <ol>
+            <li> 
+                <a href="/admin/dashboard">
+                    Home >
+                </a>
+            </li>
+            <li> 
+                <span>
+                    Update House
+                </span>
+            </li>
+        </ol>
+        </div>
+        <a href="/admin/housing/1" class="created">All Houses</a>
+    </nav>
+
+    <div class="table_admin">
+       
+        <div class="d-name-tag">
+            <p>Use this form to Update House property</p>
+        </div>
+<% if(prop) {%>
+
+        <form method="POST" class="formings" id="propertyOnly">
+            <div class="form-group">
+                <input type="hidden" name="id" value="<%= prop._id %>">
+                <label>Property's Name:</label>
+                <input class="form-control" type="text" placeholder="e.g Apple City Estate" name="name" value="<%= prop.name %>">
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input class="form-control" value="<%= prop.location %>" type="text" name="location">
+            </div>
+            <div class="form-group custom-select">
+                <label>Status:</label>
+                <select name="status" class="form-control">
+                    <option value="<%= prop.status %>"><%= prop.status %></option>
+                    <option value="Rent">Rent</option>
+                    <option value="Sale">Sale</option>
+                    <option value="Sold">Sold</option>
+                </select>
+            </div>
+            <div class="form-group custom-select">
+                <label>Period:</label>
+                <select name="period" class="form-control">
+                    <option value="<%= prop.period %>"><%= prop.period %></option>
+                    <option value="New">New</option>
+                    <option value="Recent">Recent</option>
+                    <option value="Old">Old</option>
+                </select>
+            </div>
+            <div class="form-group custom-select">
+                <label>Categories:</label>
+                <select name="categories" class="form-control">
+                    <option value="<%= prop.categories %>"><%= prop.categories %></option>
+                    <option value="Single-Family Homes">Single-Family Homes</option>
+                    <option value="Townhouses">Townhouses</option>
+                    <option value="Multi-Family Homes">Multi-Family Homes</option>
+                    <option value="Condominiums">Condominiums</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Area:</label>
+                <input class="form-control" value="<%= prop.area %>" type="text" name="area">
+            </div>
+            <div class="form-group">
+                <label>Price:</label>
+                <input class="form-control" value="<%= prop.price %>" type="text" name="price">
+            </div>
+            <div class="form-group">
+                <label>Bed:</label>
+                <input class="form-control" value="<%= prop.bed %>" type="text" name="bed">
+            </div>
+            <div class="form-group">
+                <label>Baths:</label>
+                <input class="form-control" value="<%= prop.baths %>" type="text" name="baths">
+            </div>
+            <div class="form-group">
+                <label>Garage:</label>
+                <input class="form-control" value="<%= prop.garage %>" type="text" name="garage">
+            </div>
+            <div class="form-group">
+                <label>Amenities:</label>
+                <textarea class="form-control" name="amenities" id="amenities"><%= prop.amenities %></textarea>
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea class="form-control" name="description" id="description"><%= prop.description %></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+    <% } %>
+
+    <%- include ('./messages/messages.ejs') %>
+
+    <div class="table_admin">
+    
+        <div class="d-name-tag">
+            <p>Use this form to Update House property</p>
+        </div>
+
+        <form action="/admin/edit-property-image/<%= prop._id %>" method="POST" enctype="multipart/form-data" class="formings">
+            <div class="form-group">
+                <input type="hidden" name="id" value="<%= prop._id %>">
+                <label for="img">Upload House Front view Image</label>
+                <input type="file" name="img" id="img" class="form-control-file form-control height-auto" >
+            </div>
+            <div class="form-group">
+                <label for="img2">Second Image</label>
+                <input type="file" name="img2" id="img2" class="form-control-file form-control height-auto">
+            </div>
+            <div class="form-group">
+                <label for="floor_plan">Floor plan</label>
+                <input type="file" name="floor_plan" id="floor_plan" class="form-control-file form-control height-auto" >
+            </div>
+           
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="submit">
+                </div>
+            </div>
+        </form>
+
+        <form action="/admin/upload/<%= prop._id %>" method="POST" enctype="multipart/form-data" class="formings">
+            <div class="form-group">
+                <label for="video">House view clip</label>
+                <div class="custom-file">
+                    <input type="file" name="video" id="video" accept="video/*" class="custom-file-input" >
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="footering">
+        <h3>All rights reserved and Powered by: Transverse Real Estate Solution<i class="fas fa-copyright"></i> 2023</h3>
+    </div>
+</div>
+
+<%- include ('./dash_include/footer.ejs') %>
+

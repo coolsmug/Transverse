@@ -1,0 +1,98 @@
+<%- include ('./dash_include/header.ejs')  %>
+<%- include ('./dash_include/dashboard_all.ejs') %>
+
+
+<div class="main-container">
+    <nav class="headering">
+        <div class="head_in">
+            <P>Admin Table</P>
+         <ol>
+            <li> 
+                <a href="">
+                    Home >
+                </a>
+            </li>
+            <li> 
+                <a href="">
+                    Add Blog
+                </a>
+            </li>
+        </ol>
+        </div>
+        <a href="/admin/blog/1" class="created">All Blogs</a>
+    </nav>
+
+    <div class="table_admin">
+        <%- include ('./messages/messages.ejs') %>
+        <div class="d-name-tag">
+            <p>Use this from to Add new House property</p>
+        </div>
+
+        <form action="/admin/create-blog" method="POST" enctype="multipart/form-data" class="formings">
+            <div class="form-group">
+                <label>Author's Name:</label>
+                <input class="form-control" type="text" placeholder="e.g Idris Yusuph Olatunji Land" name="fullname" <% if(user) { %>value="<%= user.first_name %> <%= user.second_name %>" readonly <% } %>>
+            </div>
+            <div class="form-group">
+                <label>Topic:</label>
+                <input class="form-control" value="" type="text" name="topic">
+            </div>
+            <div class="form-group custom-select">
+                <label>Category:</label>
+                <select name="category" class="form-control">
+                    <option>Select Option</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Holiday">Holiday</option>
+                    <option value="Government">Government</option>
+                    <option value="Politics">Politics</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Bussiness">Bussiness</option>
+                    <option value="Reality">Reality</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Articles:</label>
+                <textarea class="form-control" name="article" id="myTextArea"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="img">Page Cover:</label>
+                <input type="file" name="img" id="img" class="form-control-file form-control height-auto" >
+            </div>
+            <div class="form-group">
+                <label for="img2">Image:</label>
+                <input type="file" name="image" id="image" class="form-control-file form-control height-auto" >
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="footering">
+        <h3>All rights reserved and Powered by: Valiantfoot Limited <i class="fas fa-copyright"></i> 2023</h3>
+    </div>
+</div>
+
+<%- include ('./dash_include/footer.ejs') %>
+
+
+
+
+
+
+<script>
+     var simplemde = new SimpleMDE({ element: document.getElementById("myTextArea") });
+
+  </script>
+
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name'
+    });
+  </script>

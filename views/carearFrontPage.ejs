@@ -1,0 +1,120 @@
+<%- include ('./include/index-header.ejs') %>
+<%- include ('./include/main-header.ejs') %>
+
+
+<section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url(images/1920-miniature-businessmen-standing-on-wooden-blocks-with-the-word-goal-business-career-growth-concept.jpg);">
+    <div class="breadcrumbs-custom-inner">
+      <div class="container breadcrumbs-custom-container">
+        <div class="breadcrumbs-custom-main">
+          <h6 class="breadcrumbs-custom-subtitle title-decorated">Career</h6>
+          <h2 class="text-uppercase breadcrumbs-custom-title">Career Opportuinity</h2>
+        </div>
+        <ul class="breadcrumbs-custom-path">
+          <li><a href="/">Home</a></li>
+          <li class="active">Career</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section novi-background section-sm section-first">
+    <div class="container">
+      <div class="row row-50">
+        <div class="col-xl-8">
+          <ul class="list-xl">
+            <li>
+              <h1>Welcome to Transverse Careers</h1>
+           
+            <li>
+              <h2>Why Transverse?</h2>
+              <p></p>
+              <p>At Transverse, we don't just follow trends; we set them. We embrace <br>
+                cutting-edge technology and design thinking to create spaces that inspire and elevate.<br>
+                 Join us to be a part of a team that is constantly pushing the boundaries of what's possible in real<br>
+                  estate.</p>
+            </li>
+            <li>
+              <h3>Culture of Excellence: </h3>
+              <p>
+                Our commitment to excellence extends beyond our projects to our<br> 
+                people. Transverse is a place where your ideas are valued, your contributions are <br>
+                recognized, and your growth is nurtured. We foster a culture that encourages collaboration,<br>
+                 creativity, and continuous learning.
+              </p>
+            </li>
+            <li>
+              <h4>Impactful Projects:</h4>
+              <p>
+                Be a part of projects that leave a lasting impact on communities. <br>
+                From residential developments to commercial spaces, every Transverse project is an opportunity <br>
+                to contribute to the creation of vibrant, sustainable, and forward-thinking environments.
+              </p>
+            </li>
+            <li>
+              <h5>Innovation and Vision:</h5>
+              <p>At Transverse, we believe in building not just structures, but careers.
+                Join us as we transform the real estate landscape with innovation,
+                 dedication, and a commitment to excellence. We are on a mission to 
+                 redefine the future of living and working 
+                spaces, and we invite you to be a part of this exciting journey.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<section class="section novi-background section-sm">
+    <div class="container">
+      <div class="row row-50">
+        <div class="col-lg-10 col-xl-8">
+          <h6>Available Positions</h6>
+          <p>Explore the exciting career opportunities at Valiantfoot. We are currently hiring for the<br> 
+            following positions:</p>
+          <% if (career && Array.isArray(career) && career.length > 0) { %>
+          <ol class="list-ordered">
+            <% career.forEach( (job) => { %>
+                <li style="font-weight: bold;color: rgb(65, 198, 12);"> <%= job.jobName %>:</li>
+                <ul>
+                  <% job.jobDescription.forEach((job) => { %> 
+                  
+                      <li><%= job %>.</li>
+                  
+                  <% }) %>
+                </ul>  
+              <% }) %>
+          </ol>
+          <% } else { %>
+          <p>The company is not recruiting at this moment, Check back later. <br>
+            You can also look out on our Social media for any vacancy Advert</p>
+            <% } %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section novi-background section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-xl-8">
+          <h6>How to Apply</h6>
+          <p class="text-block">  To apply for any of the positions listed above, please send your resume and cover letter to<br><a href="mailto:Transverserealestates@gmail.com"><mark>Transverserealestates@gmail.com</mark></a><span class="font-weight-bold">Be sure to include the position title in the subject line</span>
+            
+          </p>
+          <p>
+           Transverse Real Estates Solution is an equal opportunity employer. We celebrate diversity and are committed to<br>
+             creating an inclusive environment for all employees.
+          </p>
+  
+          <p>
+            Join us a Transverse Real Estates Solution, where your career takes flight, and your contributions make a lasting <br>
+            impact. Together, let's build a future we can be proud of.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<%- include ('./include/index-footer.ejs') %>
+ 

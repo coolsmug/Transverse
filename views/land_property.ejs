@@ -1,0 +1,59 @@
+<%- include ('./include/index-header.ejs') %>
+<%- include ('./include/main-header.ejs') %>
+
+<section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url(https://res.cloudinary.com/dpboq2tck/image/upload/v1718317810/krylzr6hyhucwkwvltk1.jpg);">
+    <div class="breadcrumbs-custom-inner">
+      <div class="container breadcrumbs-custom-container">
+        <div class="breadcrumbs-custom-main">
+          <h6 class="breadcrumbs-custom-subtitle title-decorated">Our Beautiful Home</h6>
+          <h2 class="text-uppercase breadcrumbs-custom-title">Homes For You</h2>
+        </div>
+        <ul class="breadcrumbs-custom-path">
+          <li><a href="/">Home</a></li>
+          <li class="active">All Property</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="section novi-background section-md text-center">
+    <div class="container">
+      <h3 class="text-uppercase font-weight-bold wow-outer"><span class="wow slideInDown">Popular properties</span></h3>
+      <div class="row row-lg-50 row-35 offset-top-2">
+        <% if (result) {%>
+            <% result.forEach((homes) => {%>
+              
+        <div class="col-md-6 wow-outer">
+          <!-- Post Modern-->
+          <div style="text-align: left;">
+            <h4 style="color: #075579; font-weight: bolder;"><%= homes.name %></h4>
+            <h5>CODE: <span style="color: #4ca50f; font-weight: bolder;"><%= homes.land_id %></span></h5>
+          </div>
+          <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="/view-land?id=<%= homes._id %>"><img src="<%= homes.image.url %>" alt="" width="571" height="353"/></a>
+            <h4 class="post-modern-title"><a class="post-modern-title" href="https://www.google.com/maps?q=<%= homes.location %>" target="_blank"><%= homes.location %></a></h4>
+            <ul class="post-modern-meta">
+              <li><a class="button-winona" href="#">&#8358;<%=homes.price %></a></li>
+              <li><%= homes.area %></li>
+              <li>Bedroom: <%= homes.bed %></li>
+            </ul>
+            <p><%= homes.description %></p>
+           
+          </article>
+        </div>
+        <% }) %>
+        <% } %>
+        
+      </div>
+    </div>
+  </section>
+
+   
+   
+        
+    
+  
+  <%- include ('./include/index-footer.ejs') %>
+ 
+

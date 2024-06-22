@@ -1,0 +1,104 @@
+<%- include ('./include/index-header.ejs') %>
+<%- include ('./include/main-header.ejs') %>
+
+<section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url('<%= housetopay.img.url %>');">
+    <div class="breadcrumbs-custom-inner">
+      <div class="container breadcrumbs-custom-container">
+        <div class="breadcrumbs-custom-main">
+          <h6 class="breadcrumbs-custom-subtitle title-decorated"> BEST OFFER YOU CAN GET</h6>
+          <h2 class="text-uppercase breadcrumbs-custom-title"><%= housetopay.name %></h2>
+        </div>
+        <ul class="breadcrumbs-custom-path">
+          <li><a href="/">Home</a></li>
+          <li class="active"><%= housetopay.name %></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section novi-background section-sm">
+    <div class="container">
+      <div class="layout-bordered">
+        <div class="layout-bordered-item wow-outer">
+          <div class="layout-bordered-item-inner wow slideInUp">
+            <div class="icon novi-icon icon-lg mdi mdi-phone text-primary"></div>
+            <ul class="list-0">
+              <li><a class="link-default" href="tel:<%= info.mobile %>"><%= info.mobile %></a></li>
+              <li><a class="link-default" href="tel:<%= info.mobile2 %>"><%= info.mobile2 %></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="layout-bordered-item wow-outer">
+          <div class="layout-bordered-item-inner wow slideInUp">
+            <div class="icon novi-icon icon-lg mdi mdi-email text-primary"></div><a class="link-default" href="mailto:<%= info.email %>"><%= info.email %></a>
+          </div>
+        </div>
+        <div class="layout-bordered-item wow-outer">
+          <div class="layout-bordered-item-inner wow slideInUp">
+            <div class="icon novi-icon icon-lg mdi mdi-map-marker text-primary"></div><a class="link-default" href="https://www.google.com/maps?q=<%= info.address %> <%= info.state %>" target="_blank"><%= info.address %> <br> <%= info.state %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <div class="cell-xl-6 align-self-center container">
+      <div class="row">
+        <div class="col-lg-9 cell-inner">
+          <div class="section-lg">
+            <h3 class="text-uppercase wow-outer"><span class="wow slideInDown"> Make Your Payment to Own <%= housetopay.name %> </span></h3>
+            <!-- RD Mailform--> <%- include ('./messages/messages.ejs') %>
+            <form class="rd-form"  method="post" action="/pay" >
+              <div class="row row-10">
+                <div class="col-md-6 wow-outer">
+                  <div class="form-wrap wow fadeSlideInUp">
+                    <label class="form-label-outside" for="contact-first-name">First Name</label>
+                    <input type="hidden" name="id" value="<%= housetopay._id %>">
+                    <input class="form-input" id="contact-first-name" type="text" name="username" >
+                  </div>
+                </div>
+
+                <div class="col-md-6 wow-outer">
+                    <div class="form-wrap wow fadeSlideInUp">
+                      <label class="form-label-outside" for="contact-first-name">Property Name</label>
+                      <input class="form-input" id="contact-first-name" type="text" name="house_name" value="<%= housetopay.name %>">
+                    </div>
+                  </div>
+    
+                <div class="col-md-6 wow-outer">
+                  <div class="form-wrap wow fadeSlideInUp">
+                    <label class="form-label-outside" for="contact-phone">Property ID</label>
+                    <input class="form-input" id="contact-phone" type="text" name="propertyId" value="<%= housetopay.house_id %>">
+                  </div>
+                </div>
+                <div class="col-md-6 wow-outer">
+                    <div class="form-wrap wow fadeSlideInUp">
+                      <label class="form-label-outside" for="contact-phone">Email</label>
+                      <input class="form-input" id="contact-phone" type="text" name="email">
+                    </div>
+                </div>
+                <div class="col-md-6 wow-outer">
+                    <div class="form-wrap wow fadeSlideInUp">
+                      <label class="form-label-outside" for="contact-phone">Price</label>
+                      <input class="form-input" id="contact-phone" type="text" name="amount" value="<%= housetopay.price %>">
+                    </div>
+                  </div>
+               
+              </div>
+              <div class="group group-middle">
+                <div class="wow-outer"> 
+                  <button class="button button-primary button-winona wow slideInRight" type="submit">Make Payment</button>
+                </div>
+               
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <%- include ('./include/index-footer.ejs') %>
+
+ 
