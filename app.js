@@ -40,7 +40,7 @@ app.use(
       resave: false,
       saveUninitialized: true,
       store: MongoStore.create({ 
-        mongoUrl: 'mongodb://127.0.0.1:27017/Result', // Replace with your MongoDB connection string
+        mongoUrl: 'mongodb+srv://transversesecret:transverse%402024@transverse.erhafjy.mongodb.net/?retryWrites=true&w=majority&appName=transverse', // Replace with your MongoDB connection string
         collectionName: 'sessions' // Optional: specify the collection name where sessions will be stored
       }),
       cookies: { 

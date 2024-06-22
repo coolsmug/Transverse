@@ -857,7 +857,7 @@ const payStackPayment = async (req, res) => {
             }
           ]
         },
-        callback_url: "https://8686-105-113-18-125.ngrok-free.app/callback",
+        callback_url: "https://transversehomes.onrender.com/callback",
       });
       if (payment && payment.data && payment.data.authorization_url) {
         res.redirect(payment.data.authorization_url);
@@ -1022,7 +1022,7 @@ const LandPayStackPayment = async (req, res) => {
           { display_name: "Property ID", variable_name: "propertyId", value: propertyId },
         ]
       },
-      callback_url: "https://83e5-105-113-16-130.ngrok-free.app/callback",
+      callback_url: "https://transversehomes.onrender.com//callback",
     });
 
     if (payment && payment.data && payment.data.authorization_url) {
